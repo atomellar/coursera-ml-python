@@ -1,5 +1,5 @@
 import numpy as np
-import warmup
+import warm_up
 
 print("=============================================")
 print("Coursera Machine Learning - Python Version")
@@ -8,6 +8,6 @@ print("=============================================")
 
 print("Warming Excercise")
 # Show an identity matrix 5x5
-identity_matrix = warmup.create_identity_matrix(5)
+identity_matrix = warm_up.create_identity_matrix(5)
 print("Identity matrix 5x5 is \n {}".format(identity_matrix))
 
