@@ -22,7 +22,7 @@ y = data.iloc[:, 1].to_numpy()
 y = y.reshape(y.shape[0], 1)
 
 print("Plot Data")
-plt.scatter(X, y, c='r', marker='x')
+plt.scatter(X, y, c='r', marker='x', label='Data')
 plt.xlabel('Population in 10,000s')
 plt.ylabel('Profit in $10,000s')
 print("===================")
@@ -43,10 +43,24 @@ print("Gradient Descent")
 iter_count = 1500
 alpha = 0.01
 
-theta = math_util.gradient_descent(X, y, theta, alpha, iter_count)
+theta, theta_history = math_util.gradient_descent(X, y, theta, alpha, iter_count)
 print("Theta after {} loops, alpha {} is {}".format(iter_count, alpha, theta))
 print("Expected theta ~[-3.6303; 1.1664]")
 print("===================")
 
-# plt.show()
+# Predict values for population sizes of 35,000 and 70,000
+# print(np.array([1, 35000]).reshape(1, 2))
+# print(theta)
+predict35 = np.array([1, 35000]).reshape(1, 2).dot(theta)
+print("35,000 has price {}".format(predict35))
+predict70 = np.array([1, 70000]).reshape(1, 2).dot(theta)
+print("70,000 has price {}".format(predict70))
 
+print("===================")
+print(theta_history[0:5, :])
+print(theta_history.shape)
+# Plot linear regression
+# print(theta_history)
+# plt.plot(X[:, [1]], np.dot(X[:], theta), '-', label='Linear Regression')
+# plt.legend()
+# plt.show()
