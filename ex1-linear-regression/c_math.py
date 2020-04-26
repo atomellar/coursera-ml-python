@@ -9,8 +9,7 @@ def gradient_descent(X, y, theta, alpha, iter_count):
     m = X.shape[0]
     theta_count = theta.shape[0]
     # print(X[:, 0].reshape(X.shape[0], 1))
-    theta_history = np.empty((2, 1))
-    print(theta_history)
+    theta_history = np.array([])
     for i in range(iter_count):
         hypo = np.dot(X, theta)
         temp_theta = theta
@@ -18,8 +17,5 @@ def gradient_descent(X, y, theta, alpha, iter_count):
             cond = np.multiply(np.subtract(hypo, y), X[:, j].reshape(X.shape[0], 1))
             temp_theta[j] = theta[j] - (alpha / m) * np.sum(cond)
         theta = temp_theta
-        # print(theta)
-        if i < 5:
-            print(theta)
-        theta_history = np.append(theta_history, theta, axis=0)
-    return theta, theta_history
+        theta_history = np.append(theta_history, theta)
+    return theta, theta_history.reshape(-1, theta.shape[0])
